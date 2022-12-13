@@ -30,6 +30,15 @@ check_variables_set RC_NUM
 
 function create_source_release {
   cd ${SOURCE_DIR}
+  if [ ! -f "LICENSE" ]; then
+    echo "The source MUST contain a LICENSE file. See https://www.apache.org/legal/release-policy.html#licensing-documentation"
+    exit 1
+  fi
+  if [ ! -f "NOTICE" ]; then
+    echo "The source MUST contain a NOTICE file. See https://www.apache.org/legal/release-policy.html#licensing-documentation"
+    exit 1
+  fi
+
   mkdir -p ${RELEASE_DIR}
   mkdir -p ${ARTIFACTS_DIR}
 
